@@ -1,0 +1,26 @@
+{% extends 'base/base_show.html' %}
+{# 基本用户提交文章 #}
+{% block content %}
+<!--<h1 align="center" style="color:red;">-->
+    <!--{{ object }}-->
+<!--</h1>-->
+<div class="fir" align="center">
+<form method="post" action="{% url 'passage:passage_handel' %}">
+{% csrf_token %}
+    <div class="sec" style="padding-top:70px;">
+        <p align="center" style="margin-bottom:60px;width:620px;">
+            <input type="text" name="passage_title" value="" placeholder="title"  style=" float:left;border-radius:5px;background-color:#222; color:#009688; border: 2px solid #009688;">
+
+
+            <input type="submit" value="提交文章"  style="float:right; border-radius:5px; background-color:#009688; color:white; border: 2px solid #009688;">
+        </p>
+        <p>
+            <textarea rows="16" cols="100" name="translation"  style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">
+
+            </textarea>
+        </p>
+
+    </div>
+</form>
+</div>
+{% endblock content%}

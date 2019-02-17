@@ -1,0 +1,85 @@
+{% load staticfiles %}
+{# 最基本的基模板 #}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width user-scalable=no,
+    initial-scal=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Bonnie{{ title }}</title>
+    <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
+    <meta name="viewport" content="width=device-width user-scalable=no, initial-scal=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <!--initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放。-->
+    {% block head %}
+    {% endblock head %}
+</head>
+{% block body %}
+<body background="/static/images/02.jpg">
+<nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed"
+               data-toggle="collapse" data-target="#mynavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a href ="#" class="navbar-brand">Bonnie翻译</a>
+           </div>
+           <div class="collapse navbar-collapse" id="mynavbar">
+            {% block bar %}
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="{% url 'user:login' %}">登录</a></li>
+                        <li><a href="{% url 'user:register' %}">注册</a></li>
+                        <li><a href="http://fanyi.youdao.com/" target="_blank">翻译</a></li>
+                        <li><a href="#"> 关于我们 </a></li>
+                </ul>
+            {% endblock bar %}
+           </div>
+        </div>
+</nav>
+
+{% block content %}
+ <div class="jumbotron">
+         <div class="container">
+                 <div class="row">
+                   <form action="{% url 'user:index' %}" method="post">
+                         {% csrf_token %}
+                        <div class="col-lg-3 col-lg-offset-1">
+                                <textarea name="fanyi_content">
+                                        {{ fanyi_content }}
+                                </textarea>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-1">
+                            <button type="submit">翻译</button>
+                        </div>
+
+                        <div class="col-lg-1 col-lg-offset-1">
+                                <textarea name="fanyi_content">
+                                        {{ result }}
+                                </textarea>
+                        </div>
+                     </form>
+                </div>
+         </div>
+</div>
+{% endblock content%}
+<div class="footer no-mp" align="center">
+		<div class="foot_link">
+			<a href="#">关于我们</a>
+			<span>|</span>
+			<a href="#">联系我们</a>
+			<span>|</span>
+			<a href="#">招聘人才</a>
+			<span>|</span>
+			<a href="#">友情链接</a>
+		</div>
+		<p>CopyRight © 2016 Bonnie All Rights Reserved</p>
+		<p>电话：010-****888    京ICP备*******8号</p>
+	</div>
+</body>
+{% endblock body %}
+</html>

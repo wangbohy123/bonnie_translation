@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{# 注册页面 #}
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>register</title>
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/normalize.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/demo.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/component.css' %}" />
+<!--[if IE]>
+	<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<div class="logo_box">
+						<h3>欢迎你来到Bonnie</h3>
+						<form method="post" action="{% url 'user:register_handel' %}">
+                            {% csrf_token %}
+							<div class="input_outer">
+								<span class="u_user"></span>
+								<input id="n1" name="uname" class="text"   type="text" placeholder="请输入账户">
+								<span class="error">用户名的长度至少6位!</span>
+							</div>
+							<div class="input_outer">
+								<span class="us_uer"></span>
+								<input id="n2" name="upwd" class="text"   value="" type="password" placeholder="请输入密码">
+								<span class="error">密码的长度至少6位!</span>
+							</div>
+							<div class="input_outer">
+								<span class="us_uer"></span>
+								<input id="n3" name="cpwd" class="text"  value="" type="password" placeholder="请再次输入密码">
+								<span class="error">两次输入密码不一致!</span>
+							</div>
+							<div class="input_outer">
+								<span class="uss_uer"><img src="{% url 'user:verifycode' %}"></span>
+                                <input class="text" type="text" value="" name="imgCode" placeholder="请输入验证码">
+								<span class="error">验证码错误!</span>
+                            </div>
+                            <!--<div class="input_outer">-->
+								<!--<p class="us_users">-->
+									<!--<input class="radio"  type="radio" value="ordinary_user" name="user_kind">-->
+									<!--普通用户-->
+									<!--<input class="radio"  type="radio" value="translater" name="user_kind">-->
+									<!--翻译者-->
+								<!--</p>-->
+                            <!--</div>-->
+							<div class="input_outer">
+								<p class="us_users">
+									<select name="user_kind"  >
+										<option  value="ordinary_user">普通用户</option>
+										<option  value="translater">翻译者</option>
+									</select>
+								</p>
+                            </div>
+
+							<h5 style="padding-left:62px;">我已阅读并同意<a href="#" target="_blank" style="color:#0096e6;">《Bonnie用户协议》</a></h5>
+							<div class="mb2">
+								<a class="act-but submit" href="javascript:;" style="color: #FFFFFF">
+								<input type="submit" value="注册" />
+								</a>
+							</div>
+							<h6 style="padding-left:160px;">
+							<a href="login.html"><font color="#0096e6">已有账号？点击登录</font></a>
+							</h6>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="{% static 'login/js/TweenLite.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+		<script src="{% static 'login/js/EasePack.min.js' %}"></script>
+		<script src="{% static 'login/js/rAF.js' %}"></script>
+		<script src="{% static 'login/js/demo-1.js' %}"></script>
+		<script src="{% static 'login/js/check.js' %}"></script>
+		<div style="text-align:center;">
+		</div>
+	</body>
+</html>

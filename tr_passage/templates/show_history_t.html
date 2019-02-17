@@ -1,0 +1,23 @@
+{% extends 'base/base_show.html' %}
+{# 显示历史翻译文章 #}
+{% block content %}
+<div style="padding:60px;">
+<div style="border:5px solid yellow;border-radius:10px;padding:20px;height:73%;">
+<div align="center" style="width:50%;float:left;">
+<h3 align="left" style="color: white;padding-left:60px;">
+    文章题目:{{ passage_title }}
+</h3>
+    <textarea style="width:80%;height:70%;resize:none;border-radius:10px;">
+        {{ translation }}
+    </textarea>
+
+</div>
+<div align="center" style="width:50%;float:right;">
+<h3 align="left" style="color: white;padding-left:60px;">结果:</h3>
+    <textarea  style="width:80%;height:70%;resize:none;border-radius:10px;">
+        {{ text }}
+    </textarea>
+</div>
+</div>
+</div>
+{% endblock content%}

@@ -1,0 +1,28 @@
+{% extends 'base/base_show.html' %}
+{# 翻译者选择文章后显示的页面 #}
+{% block content %}
+<div style="padding:40px;height:90%;">
+    <div style="border:5px solid yellow;border-radius:10px;padding:20px;height:100%">
+         <div class="c" align="center" style="width:50%;float:left;">
+             <h4 style="color: white;float:left;padding-left:50px;">
+                您选择的文章:
+                </h4>
+             <textarea rows="90" cols="80" name="translation" style="height:80%;border-radius:10px;">
+                {{ translation }}
+             </textarea>
+         </div>
+        <div class="cc" align="center" style="width:50%;float:right;">
+             <h4 style="color: white;float:left;margin-left:50px;">
+            您的翻译结果:
+            </h4>
+            <input type="submit" value='提交文章' style="float:right;margin-right:50px;border-radius:8px;">
+            <form method="post" action="{% url 'passage:translater_submit_passage' %}">
+            {% csrf_token %}
+            <textarea rows="90" cols="80" name="result" style="height:80%;border-radius:10px;">
+            </textarea>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

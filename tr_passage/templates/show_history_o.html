@@ -1,0 +1,50 @@
+{% extends 'base/base_show.html' %}
+{# 显示基本用户的历史文章 基本用户在此进行选择 #}
+{# 逻辑处理是这样的：如果该文章的be_translated为True 则只显示翻译结果中 if_was_chosen为True的结果 #}
+{#  #}
+{% block content %}
+<div style="padding:30px;">
+    <div align="center" style="border:5px solid yellow;border-radius:10px;padding:20px;height:80%;">
+        <h2 align="center" style="color: white;margin-top:0px;">
+            题目:{{ passage.passage_title }}
+        </h2>
+        <div style="float:left;width:50%;padding-left:40px;">
+            <textarea style="height:80%;width:90%;border-radius:10px;resize:none;float:left;">&nbsp;原文如下:{{ passage.text }}</textarea>
+        </div>
+        <div style="float:right;width:50%;padding-right:40px;">
+            {% if passage.be_translated == False %}
+             <p style="color: white;">
+                result:
+             </p>
+                {% for object in result %}
+                 <P style="color: white">
+                    结果的id：{{ object.id }}
+                 </P>
+                 <textarea style="height:80%;width:90%;border-radius:10px;resize:none;">
+                    {{ object.result }}
+                 </textarea>
+                 <form style="color: white" method="post" action="{% url 'passage:handel_goal' %}"></form>
+                {% endfor %}
+             <p style="color: white">选择你觉得是最终结果的id号</p>
+             <form method="post" action="{% url 'passage:handel_result' %}">
+                {% csrf_token %}
+                <select name="id">
+                    {% for foo in result %}
+                        <option value="{{ foo.id }}">{{ foo.id }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit">
+             </form>
+                {% endif %}
+                {% if passage.be_translated == True %}
+                    {% for object in result %}
+                    {% if object.if_was_chosen == True %}
+                     <textarea  style="height:80%;width:90%;border-radius:10px;resize:none;">&nbsp;最佳结果如下：{{ object.result }}
+                     </textarea>
+                    {% endif %}
+                    {% endfor %}
+                {% endif %}
+        </div>
+    </div>
+ </div>
+{% endblock content%}

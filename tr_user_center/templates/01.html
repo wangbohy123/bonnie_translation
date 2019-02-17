@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<!-- Head -->
+<head>
+<title>Bonnie user center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="" />
+<script type="application/x-javascript">
+addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+</script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" media="all">
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+</head>
+	<body background="{% static 'images/02.jpg' %}">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="container">
+                   <div class="navbar-header">
+                       <button type="button" class="navbar-toggle collapsed"
+                       data-toggle="collapse" data-target="#mynavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a href ="#" class="navbar-brand">Bonnie翻译</a>
+                   </div>
+                   <div class="collapse navbar-collapse" id="mynavbar">
+                       <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"> &nbsp{{ uname }} </a></li>
+                            <li><a href="{% url 'user:index_for_user' %}">首页</a></li>
+                            <li><a href="{% url 'user_center:show' %}">用户中心</a></li>
+                            <li><a href="#"> 关于我们 </a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+                        </ul>
+                   </div>
+                </div>
+            </nav>
+		<div class="containerw3layouts-agileits">
+            <div  class="resp-vtabs w3-agile" id="verticalTab" style="background-color:#222; border-radius:5em; display: block; width: 100%; margin: 0px;height: 377px;">
+				<ul class="resp-tabs-list agileits-w3layouts" style="margin-bottom:0px;">
+					<li class="resp-tab-item"><span>你的基本信息</span></li>
+					<li class="resp-tab-item"><span>文章历史结果</span></li>
+					<li class="resp-tab-item agileinfo"><span>浏览文章，帮助他人</span></li>
+					<li class="resp-tab-item"><span>about us</span></li>
+				</ul>
+				<div class="resp-tabs-container">
+					<div class="resp-tab-content">
+						<div class="agileabout">
+							<div class="agileabout-image w3-agileits">
+								<img class="chart_t" src="{% static 'images/03.jpg' %}" alt="W3layouts" height="600">
+							</div>
+							<div class="agileabout-info" style="height:400px; width:350px; padding:10px;">
+								<ul>
+									<li><div class="li1">用户名</div><div class="li2">:</div><div class="li3">{{ uname }}</div><div class="clearfix"></div></li>
+									<li><div class="li1">用户种类</div><div class="li2">:</div><div class="li3">{{ user_kind}}</div><div class="clearfix w3-agileits"></div></li>
+									<li><div class="li1">Email</div><div class="li2 agileinfo">:</div><div class="li3"><a class="mail" href="mailto:mail@example.com">{{ mail }}</a></div><div class="clearfix"></div></li>
+									<li><div class="li1">Website</div><div class="li2">:</div><div class="li3"><a href="#">暂无</a></div><div class="clearfix"></div></li>
+									<li><div class="li1 agileinfo">Address</div><div class="li2">:</div><div class="li3 w3-agileits">暂无</div><div class="clearfix wthree"></div></li>
+								    <li><div class="li1">你的等级</div><div class="li2">:</div><div class="li3">{{ credit_level }}</div><div class="clearfix w3-agileits"></div></li>
+                                    <li><div class="li1">你的分数</div><div class="li2">:</div><div class="li3">{{ goal }}</div><div class="clearfix w3-agileits"></div></li>
+                                </ul>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="resp-tab-content">
+                        <div class="work">
+                                <div class="work-info agileabout-info">你提交过的文章（标题）:</div>
+                                {% for result in history %}
+                                    <div class="work-info agile"><a href="{% url 'passage:show_history' %}?id={{ result.id }}">{{ result.passage.passage_title }}</a></div>
+                                {% endfor %}
+                        </div>
+					</div>
+
+					<div class="resp-tab-content">
+                        <div class="work w3lsfooteragileits">
+                            <form method="post" action="{% url 'passage:choose_passage' %}">
+                                {% csrf_token %}
+                                 <input type="submit" value="选择文章进行翻译（仅限翻译者）">
+                            </form>
+                        </div>
+					</div>
+					<div class="resp-tab-content">
+						<div class="our-skills" style="margin:0 0 0 40px;">
+							<div class="single-skill">
+								<p class="lead">HTML</p>
+								<div class="progress">
+									<div class="progress-bar progress-bar-1">90%</div>
+								</div>
+							</div>
+							<div class="single-skill">
+								<p class="lead">CSS</p>
+								<div class="progress wthree">
+									<div class="progress-bar progress-bar-2">80%</div>
+								</div>
+							</div>
+							<div class="single-skill">
+								<p class="lead">JAVASCRIPT</p>
+								<div class="progress w3-agile">
+									<div class="progress-bar progress-bar-3">85%</div>
+								</div>
+							</div>
+							<div class="single-skill">
+								<p class="lead">PHP</p>
+								<div class="progress">
+									<div class="progress-bar agile progress-bar-4">95%</div>
+								</div>
+							</div>
+							<div class="single-skill">
+								<p class="lead">SQL</p>
+								<div class="progress w3layouts">
+									<div class="progress-bar progress-bar-5">75%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="resp-tab-content">
+						<div class="agileabout-info aitsabout">
+							<ul>
+								<li><div class="li1">Name</div><div class="li2 wthree">:</div><div class="li3">Alan Parrish</div><div class="clearfix w3-agile"></div></li>
+								<li><div class="li1 w3-agile">Birthday</div><div class="li2">:</div><div class="li3">10/10/1990</div><div class="clearfix"></div></li>
+								<li><div class="li1">Phone</div><div class="li2 w3-agile">:</div><div class="li3">001-8766488735</div><div class="clearfix"></div></li>
+								<li><div class="li1">Email</div><div class="li2">:</div><div class="li3"><a class="mail" href="mailto:mail@example.com">info@example.com</a></div><div class="clearfix agile"></div></li>
+								<li><div class="li1">Website</div><div class="li2">:</div><div class="li3"><a href="#">www.examplesite.com</a></div><div class="clearfix"></div></li>
+								<li><div class="li1 w3-agile">Address</div><div class="li2">:</div><div class="li3">Parma Via Modena, 40019, Sant'Agata Bolognese, BO, Italy</div><div class="clearfix"></div></li>
+							</ul>
+						</div>
+						<div class="clear"></div>
+						<div class="social-icons w3layouts agileits">
+							<h4>Follow Me on</h4>
+							<ul>
+								<li class="fb w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span class="text w3layouts agileits">Facebook</span></a></li>
+								<li class="twt w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span class="text w3layouts agileits">Twitter</span></a></li>
+								<li class="ggp w3ls w3layouts agileits"><a href="#"><span class="icons w3layouts agileits"></span><span class="text w3layouts agileits">Google+</span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="clear w3-agile"></div>
+			</div>
+		</div>
+		<div class="w3lsfooteragileits">
+			<p> &copy; 2018 Multi Tabs Resume. All Rights Reserved | Design by Bonnie</p>
+		</div>
+				<script src="{% static 'js/easyResponsiveTabs.js' %}"></script>
+				<script type="text/javascript">
+					$(document).ready(function () {
+						$('#horizontalTab').easyResponsiveTabs({
+							type: 'default',
+							width: 'auto',
+							fit: true,
+							closed: 'accordion',
+							activate: function(event) {
+								var $tab = $(this);
+								var $info = $('#tabInfo');
+								var $name = $('span', $info);
+								$name.text($tab.text());
+								$info.show();
+							}
+						});
+						$('#verticalTab').easyResponsiveTabs({
+							type: 'vertical',
+							width: 'auto',
+							fit: true
+						});
+					});
+				</script>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base/base_show.html' %}
+{# 翻译者选择文章进行翻译 #}
+{% block content %}
+<div align="center" style="padding:60px;">
+<div align="left" style="border:5px solid yellow;width:80%;height:70%;border-radius:10px;padding:20px;">
+    <h3 style="color: white;margin-top:5px;" align="center">
+    这些文章的翻译需要你的帮忙，点开看看吧！
+    </h3>
+    <ul  style="color: white;">
+        {% for passage in passages_list %}
+        <li style="margin:10px;"><a href="{% url 'passage:show_passage' %}?id={{ passage.id }}" style="color:white;">{{ passage }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endblock content %}

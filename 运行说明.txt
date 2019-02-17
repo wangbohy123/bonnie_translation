@@ -1,0 +1,8 @@
+             Bonnie翻译网站运行说明：
+
+python版本号：python3.6.2（32位）
+django版本号：1.11.5
+需安装mysqlclient包
+安装方法：pip install mysqlclient
+运行前将setting.py里的数据库名改为已有的数据库，并且密码改为自己的密码
+最好生成一下迁移:python manage.py migrate

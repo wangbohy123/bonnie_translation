@@ -1,0 +1,161 @@
+/* Header */
+.large-header {
+	position: relative;
+	width: 100%;
+	background: #333;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+
+.demo-1 .large-header {
+	background-image: url('../img/demo-1-bg.jpg');
+}
+.logo_box{
+	width: 500px;
+	height: 500px;
+	padding: 5px;
+	color: white;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -150px;
+	margin-top: -280px;
+}
+.logo_box h3{
+	width:55%;
+	text-align:center;
+	height: 20px;
+	font: 20px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei",sans-serif;
+	color: #FFFFFF;
+	line-height: 20px;
+
+}
+form{
+	width: 480px;
+	height: 485px;
+}
+.logon_inof{
+	width: 100%;
+	min-height: 450px;
+	padding-top: 35px;
+	position: relative;
+}
+.input_outer{
+	height: 50px;
+	padding: 0 5px;
+	margin-bottom: 15px;
+	border-radius: 50px;
+	position: relative;
+
+}
+.input_outer input{
+    height: 50px;
+	padding: 0 5px;
+	margin-bottom: 15px;
+	border-radius: 50px;
+    border: rgba(255,255,255,0.2) 2px solid !important;
+	color:white;
+}
+.u_user{
+	width: 25px;
+	height: 25px;
+	border:0px;
+	background: url(../img/login_ico.png);
+	background-position:  -125px 0;
+	position: absolute;
+	margin: 10px 13px;
+}
+.us_uer{
+	width: 25px;
+	height: 25px;
+	border:0px;
+	background-image: url(../img/login_ico.png);
+	background-position: -125px -34px;
+	position: absolute;
+	margin: 10px 13px;
+}
+.uss_uer{
+	width: 25px;
+	height: 25px;
+	background-image: url(../img/login_ico.png);
+	background-position: -127px -65px;
+	border:0px;
+	position: absolute;
+	margin: 10px 13px;
+}
+img{
+  left:145px;
+   margin-top:4px;
+   position:absolute;
+}
+select{
+    margin-left:50px;
+    color:#aab2bd;
+    width:234px;
+    height:54px;
+    border-radius:50px;
+    font: 14px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei";
+    border: rgba(255,255,255,0.2) 2px solid !important;
+    display:inline-block;
+
+}
+
+/*.us_users{
+
+   width:280px;
+    height: 50px;
+	padding: 0 5px;
+	margin-bottom: 15px;
+	border-radius: 50px;
+    border: rgba(255,255,255,0.2) 2px solid !important;
+	color:white;
+}*/
+.text{
+	width: 220px;
+	height: 46px;
+	outline: none;
+	display: inline-block;
+	font: 14px "microsoft yahei",Helvetica,Tahoma,Arial,"Microsoft jhengHei";
+	margin-left: 50px;
+	border: none;
+	background: none;
+	line-height: 46px;
+}
+.error{
+        height:86px;
+        color:gray;
+        font-weight: bold;
+        display:none;
+}
+
+.mb2{
+	margin-bottom: 20px;
+
+
+}
+.mb2 a{
+    margin-left:52px;
+    width:204px;
+	text-decoration: none;
+	outline: none;
+}
+.mb2 a input{
+    background:#0096e6;
+    border:0px;
+    border-radius:10px;
+    margin-radius:10px;
+}
+.submit {
+	padding: 15px;
+    margin-radius:0px;
+	display: block;
+}
+.act-but{
+	line-height: 20px;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 50px;
+	background: #0096e6;
+}

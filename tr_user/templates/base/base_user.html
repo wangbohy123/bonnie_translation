@@ -1,0 +1,69 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{# 用户继承的模板 #}
+{% block head %}
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/main.css' %}">
+{% endblock %}
+{% block bar %}
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">&nbsp{{ uname }} </a></li>
+        <!--<li><a href="#">首页</a></li>-->
+        <li><a href="{% url 'user:index_for_user' %}">首页</a></li>
+        <li><a href="http://fanyi.youdao.com/" target="_blank">翻译</a></li>
+        <!--<li><a href="#">用户中心</a></li>-->
+        <li><a href="{% url 'user:user_center' %}">用户中心</a></li>
+        <li><a href="#"> 关于我们 </a></li>
+        <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+    </ul>
+{% endblock bar %}
+{% block content %}
+<div class="menu">
+        <div class="div2">
+            <div class="container">
+                <h1 class="page-header">Boonie</h1>
+                <ul class="u2">
+                    <li>
+                        <span><h5>your account</h5></span>
+                        <div class="right">
+                            <h3>
+                                <p>我的账号名:{{ uname }}</p>
+                                <p>用户种类:{{ user_kind }}</p>
+                                <button>退出账号</button>
+                                <button>切换账号</button>
+                            </h3>
+                        </div>
+                    </li>
+                    <li>
+                        <span>草稿箱 </span>
+                        <div class="right">
+                            <textarea> 文章翻译结果</textarea><br>
+                            <form action="#" method="get">
+                                <button  type="submit">提交</button>
+                            </form>
+                        </div>
+                        {% block submit %}{% endblock %}
+                    </li>
+                    <li>
+                        <span>your history missage</span>
+                        <div class="right">
+                            <a><p>(涉及到的历史文章)</p></a>
+                            <p>{% block history %}{% endblock %}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+     </div>
+<script type="text/javascript" src="{% static 'bootstrap/js/jiemian.js' %}"></script>
+
+
+
+{% block user_center %}
+{% endblock user_center %}
+
+{% endblock content%}

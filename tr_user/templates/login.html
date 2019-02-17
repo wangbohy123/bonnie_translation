@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{# 登录页面 #}
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/normalize.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/demo.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/component.css' %}" />
+<!--[if IE]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<div class="logo_box" style="padding:50px;">
+						<h3>欢迎你来到Bonnie</h3>
+						<form method="post" action="{% url 'user:longin_handel' %}">
+                            {% csrf_token %}
+							<div class="input_outer">
+								<span class="u_user"></span>
+								<input name="uname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+							</div>
+							<div class="input_outer">
+								<span class="us_uer"></span>
+								<input name="upwd" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+							</div>
+                           <div class="input_outer">
+								<span class="uss_uer"></span>
+								<p class="us_users">
+									<select name="user_kind"  >
+										<option  value="ordinary_user">普通用户</option>
+										<option  value="translater">翻译者</option>
+									</select>
+								</p>
+                            </div>
+
+							<div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF"><input type="submit" value="登录" /></a></div>
+							<h6 style="padding-left:160px;">
+								<a href=".../register.html"><font color="#0096e6">没有账号？点击注册</font></a>
+							</h6>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="{% static 'login/js/TweenLite.min.js' %}"></script>
+		<script src="{% static 'login/js/EasePack.min.js' %}"></script>
+		<script src="{% static 'login/js/rAF.js' %}"></script>
+		<script src="{% static 'login/js/demo-1.js' %}"></script>
+		<div style="text-align:center;">
+</div>
+	</body>
+</html>
